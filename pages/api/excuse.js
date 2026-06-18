@@ -1,6 +1,11 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { createClient } from "@supabase/supabase-js";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 const ipMap = {};
 
@@ -37,6 +42,16 @@ ${kakaoInstruction}`,
 
     const text = message.content[0].text;
     const parsed = JSON.parse(text);
+
+    await supabase.from("pingye_logs").insert({
+      situation,
+      target,
+      style,
+      kakao: kakao || false,
+      ip,
+      created_at: new Date().toISOString(),
+    });
+
     res.status(200).json(parsed);
 
   } catch (e) {
