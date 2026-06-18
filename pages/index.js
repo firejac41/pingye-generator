@@ -4,6 +4,7 @@ export default function Home() {
   const [situation, setSituation] = useState("");
   const [target, setTarget] = useState("직장 상사");
   const [style, setStyle] = useState("진지하고 설득력 있게");
+  const [kakao, setKakao] = useState(false);
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -21,7 +22,7 @@ export default function Home() {
       const res = await fetch("/api/excuse", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ situation, target, style }),
+        body: JSON.stringify({ situation, target, style, kakao }),
       });
       const data = await res.json();
       if (data.error) {
@@ -52,7 +53,7 @@ export default function Home() {
         />
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
         <div>
           <label style={{ display: "block", fontSize: 14, marginBottom: 6, color: "#555" }}>누구한테?</label>
           <select value={target} onChange={(e) => setTarget(e.target.value)}
@@ -75,6 +76,19 @@ export default function Home() {
             <option>유머러스하고 웃기게</option>
           </select>
         </div>
+      </div>
+
+      <div style={{ marginBottom: 20, display: "flex", alignItems: "center", gap: 8 }}>
+        <input
+          type="checkbox"
+          id="kakao"
+          checked={kakao}
+          onChange={(e) => setKakao(e.target.checked)}
+          style={{ width: 16, height: 16, cursor: "pointer" }}
+        />
+        <label htmlFor="kakao" style={{ fontSize: 14, color: "#555", cursor: "pointer" }}>
+          💬 카톡 말투로 변환 (ㅠㅠ, 축약어 포함)
+        </label>
       </div>
 
       <button onClick={generate} disabled={loading}

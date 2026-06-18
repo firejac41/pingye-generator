@@ -18,7 +18,11 @@ export default async function handler(req, res) {
     }
     ipMap[key]++;
 
-    const { situation, target, style } = req.body;
+    const { situation, target, style, kakao } = req.body;
+
+    const kakaoInstruction = kakao
+      ? `반드시 카톡 말투로 작성해. ㅠㅠ, ㅋㅋ, 축약어, 이모티콘 등을 자연스럽게 섞어서 실제 카톡에서 보낼 수 있는 말투로 써줘.`
+      : `격식체나 일반 말투로 작성해.`;
 
     const message = await client.messages.create({
       model: "claude-sonnet-4-6",
@@ -26,7 +30,8 @@ export default async function handler(req, res) {
       system: `너는 핑계 전문 작가야. 사용자가 상황을 알려주면 그럴듯한 핑계 3가지를 JSON 형식으로만 반환해.
 반드시 아래 형식으로만 응답하고, 마크다운 코드블록이나 다른 텍스트는 절대 포함하지 마.
 {"excuses": [{"title": "핵심 한줄 요약", "text": "실제로 쓸 핑계 문장 (2~3문장)", "tip": "이 핑계 사용 팁 한줄"}]}
-핑계는 너무 뻔하지 않고 창의적이면서도 실제로 쓸 수 있어야 해.`,
+핑계는 너무 뻔하지 않고 창의적이면서도 실제로 쓸 수 있어야 해.
+${kakaoInstruction}`,
       messages: [{ role: "user", content: `상황: ${situation}\n대상: ${target}\n스타일: ${style}` }],
     });
 
