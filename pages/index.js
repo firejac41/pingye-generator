@@ -39,7 +39,8 @@ export default function Home() {
   return (
     <div style={{ maxWidth: 600, margin: "0 auto", padding: "2rem 1rem", fontFamily: "sans-serif" }}>
       <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 4 }}>🤥 핑계 생성기</h1>
-      <p style={{ color: "#888", marginBottom: 24 }}>그럴듯한 핑계를 AI가 만들어드려요</p>
+      <p style={{ color: "#888", marginBottom: 8 }}>그럴듯한 핑계를 AI가 만들어드려요</p>
+      <p style={{ color: "#f87171", fontSize: 12, marginBottom: 24, background: "#2a1a1a", padding: "6px 12px", borderRadius: 8, display: "inline-block" }}>⚠️ 재미로만 사용해주세요</p>
 
       <div style={{ marginBottom: 16 }}>
         <label style={{ display: "block", fontSize: 14, marginBottom: 6, color: "#555" }}>어떤 상황이에요?</label>
@@ -91,7 +92,6 @@ export default function Home() {
         <div style={{ marginTop: 24 }}>
           {results.map((e, i) => (
             <div key={i} style={{ marginBottom: 12, padding: 16, borderRadius: 12, border: "1px solid #e5e7eb", background: "#1e1e2e", color: "#ffffff" }}>
-              
               <div style={{ fontSize: 13, color: "#6366f1", fontWeight: 600, marginBottom: 6 }}>핑계 {i + 1} — {e.title}</div>
               <p style={{ fontSize: 14, margin: "0 0 8px", lineHeight: 1.6, color: "#ffffff" }}>{e.text}</p>
               <div style={{ fontSize: 12, color: "#aaa" }}>💡 {e.tip}</div>
