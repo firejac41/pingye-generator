@@ -1,40 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🤥 핑계 생성기
 
-## Getting Started
+> AI가 그럴듯한 핑계를 만들어주는 웹서비스
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 주요 기능
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- 🎯 **상황 입력** — 어떤 상황인지 입력하면 핑계 3가지 자동 생성
+- 👤 **대상 선택** — 직장 상사 / 친구 / 연인 / 부모님 / 선생님 / 거래처
+- 🎭 **스타일 선택** — 진지하게 / 애절하게 / 쿨하게 / 웃기게
+- 💬 **카톡 말투 변환** — 체크하면 실제 카톡에서 쓸 수 있는 말투로 변환
+- 🚫 **하루 10회 제한** — 남용 방지
+- 📋 **사용 로그 저장** — Supabase에 사용 기록 저장
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## 기술 스택
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **프레임워크** : Next.js
+- **AI** : Claude API (claude-sonnet-4-6)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 주의사항
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+⚠️ 재미로만 사용해주세요
+⚠️ 소스코드로 사이트를 생성할 시 Antropic API 키를 요구합니다.
